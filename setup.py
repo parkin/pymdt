@@ -17,5 +17,8 @@ setup(name='pymdt',
     author='Will Parkin',
     author_email='wmparkin@gmail.com',
     url='https://github.com/parkin/pymdt',
-    packages=['pymdt']
+    packages=['pymdt'],
+    install_requires=[
+        'numpy'
+    ]
     )
