@@ -13,7 +13,7 @@ _TEST_PATH = path.dirname(path.abspath(__file__))
 FILE_SIMPLE_M = path.join(_TEST_PATH, 'test_files', 'simple.m')
 
 
-class TestMDTFile(unittest.TestCase):
+class TestInit(unittest.TestCase):
 
     def test_read_simple_m(self):
         d = loadmdt(FILE_SIMPLE_M)
@@ -38,6 +38,15 @@ class TestMDTFile(unittest.TestCase):
         Map_should_be = np.array([[[0.0, 1.0], [2.0, 3.0], [4.0, 5.0]], [[6.0, 7.0], [8.0, 9.0], [10.0, 11.0]], [[12.0, 13.0], [14.0, 15.0], [16.0, 17.0]]])
         np.testing.assert_array_almost_equal(Map, Map_should_be)
 
+    def test_file_not_found_err(self):
+        not_filename = 'adsfkljsad.sdafkasdlflas.dfjsakddflkgh.sadglkasdlkjsdfeiwq'
+
+        self.assertRaises(FileNotFoundError, loadmdt, not_filename)
+
+class TestInitHidden(unittest.TestCase):
+    """
+    Unittests for hidden functions in __init__.py
+    """
     def test_parse_variable_name(self):
         line = 'X = [1.0 2.0];'
 
