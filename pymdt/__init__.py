@@ -1,3 +1,5 @@
+from pymdt._version import __version__
+
 import numpy as np
 import re
 

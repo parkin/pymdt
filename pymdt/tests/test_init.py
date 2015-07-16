@@ -43,6 +43,10 @@ class TestInit(unittest.TestCase):
 
         self.assertRaises(FileNotFoundError, loadm, not_filename)
 
+    def test_version_exists(self):
+        from pymdt import __version__
+
+
 class TestInitHidden(unittest.TestCase):
     """
     Unittests for hidden functions in __init__.py
