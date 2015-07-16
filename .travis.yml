@@ -11,3 +11,5 @@ install:
   - "pip install . -v"
 # command to run tests
 script: nosetests
+notifications:
+  email: false
