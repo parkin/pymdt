@@ -4,6 +4,8 @@ Python package for reading NT-MDT data.
 
 Currently, it reads `.m` maps exported by NT-MDT.
 
+This project is very alpha, and the API is likely to change.
+
 ## Usage
 
 ```python
