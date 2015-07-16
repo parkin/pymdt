@@ -1,16 +1,3 @@
-"""
-The specs for the NOVA exported .m files are as follows:
-
-X = [###.#### ###.#### ###.#### ...]; // array of X coorindates in Angstroms
-Y = [###.#### ###.#### ###.#### ...]; // array of Y coordinates in Angstroms
-WavelengthCalibr = [##.#### ##.#### ...]; // array of wavelengths for spectra x-axes
-RamanShiftCalibr = [##.#### ##.#### ...]; // array of Raman shifts for spectra x-axes
-Map = zeros(#X,#Y,#Z); // Would initialze a X x Y x Z array, where X are the spatial dimensions and Z is the length of the profile at pixel X,Y
-Map(:,:,1) = [##.### (X of these) ;##.### (X of these) ; .... (Y rows)]; // X x Y array of values for the 1st spectrum index
-....
-Map(:,:,1) = [##.### (X of these) ;##.### (X of these) ; .... (Y rows)]; // X x Y array of values for the Zth spectrum index
-"""
-
 import numpy as np
 import re
 
@@ -108,9 +95,9 @@ def _parse_sub_array_assignment_index(line):
     :param line: String line
     :returns: Index of last dim assigned in assignment
 
-    >>> line = 'Map(:,:,99) = [1 2 3];'
+    >>> line = 'Map(:,:,99) = [1 2 3];' # Note that Matlab starts with 1, so 1 is 0th index
     >>> _parse_sub_array_assignment_index(line)
-    99
+    98
 
     """
     lhs = line.split(' = ')[0].strip()
@@ -120,6 +107,26 @@ def _parse_sub_array_assignment_index(line):
 
 def loadmdt(filename):
     """
+    Loads an area scan .m file, exported by NT-MDT, into a dictionary.
+
+    :param filename: Filename of (path to) .m file
+    :returns: A dictionary containing what the result would be if the NT-MDT .m
+                script was run in Matlab.
+
+    >>> d = loadmdt('pymdt/tests/test_files/simple.m')
+
+    `d` Will then have the following contents:
+
+        {
+            'X': 1D numpy array of x position values in Angstroms,
+            'Y': 1D numpy array of y position values in Angstroms,
+            'WavelengthCalibr': 1D array of wavelengths in nm corresponing to
+                the x-axis for the spectra at each pixel,
+            'RamanShiftCalibr': 1D array of Raman shifts in 1/cm corresponing to
+                the x-axis for the spectra at each pixel,
+            'Map': 2D spectra map. Map[1][2][:] would return the spectrum at
+                position X[1], Y[2]
+        }
     """
     result = {}
 
