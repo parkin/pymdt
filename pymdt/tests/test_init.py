@@ -2,7 +2,7 @@ import unittest
 from os import path
 import numpy as np
 
-from pymdt import loadmdt
+from pymdt import loadm
 from pymdt import _parse_variable_name
 from pymdt import _parse_array_assignment
 from pymdt import _parse_is_sub_array_assignment
@@ -16,7 +16,7 @@ FILE_SIMPLE_M = path.join(_TEST_PATH, 'test_files', 'simple.m')
 class TestInit(unittest.TestCase):
 
     def test_read_simple_m(self):
-        d = loadmdt(FILE_SIMPLE_M)
+        d = loadm(FILE_SIMPLE_M)
 
         X = d['X']
         X_should_be = np.array([236227.1094, 241782.6650, 247338.2207])
@@ -41,7 +41,7 @@ class TestInit(unittest.TestCase):
     def test_file_not_found_err(self):
         not_filename = 'adsfkljsad.sdafkasdlflas.dfjsakddflkgh.sadglkasdlkjsdfeiwq'
 
-        self.assertRaises(FileNotFoundError, loadmdt, not_filename)
+        self.assertRaises(FileNotFoundError, loadm, not_filename)
 
 class TestInitHidden(unittest.TestCase):
     """

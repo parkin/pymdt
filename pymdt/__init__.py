@@ -105,7 +105,7 @@ def _parse_sub_array_assignment_index(line):
 
     return int(shape_str.split(',')[2]) - 1
 
-def loadmdt(filename):
+def loadm(filename):
     """
     Loads an area scan .m file, exported by NT-MDT, into a dictionary.
 
@@ -113,7 +113,7 @@ def loadmdt(filename):
     :returns: A dictionary containing what the result would be if the NT-MDT .m
                 script was run in Matlab.
 
-    >>> d = loadmdt('pymdt/tests/test_files/simple.m')
+    >>> d = loadm('pymdt/tests/test_files/simple.m')
 
     `d` Will then have the following contents:
 
