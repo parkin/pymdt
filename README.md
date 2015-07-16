@@ -1,4 +1,5 @@
 # pymdt
+[![Build Status](https://travis-ci.org/parkin/pymdt.svg?branch=master)](https://travis-ci.org/parkin/pymdt)
 
 Python package for reading NT-MDT data.
 
