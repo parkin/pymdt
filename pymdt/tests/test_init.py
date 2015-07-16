@@ -12,6 +12,12 @@ _TEST_PATH = path.dirname(path.abspath(__file__))
 
 FILE_SIMPLE_M = path.join(_TEST_PATH, 'test_files', 'simple.m')
 
+# FileNotFoundError is not defined until python3.4, so revert back to IOError
+# if needed
+try:
+    FileNotFoundError
+except NameError:
+    FileNotFoundError = IOError
 
 class TestInit(unittest.TestCase):
 
