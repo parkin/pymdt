@@ -2,11 +2,11 @@ import unittest
 from os import path
 import numpy as np
 
-from mdt import loadmdt
-from mdt import _parse_variable_name
-from mdt import _parse_array_assignment
-from mdt import _parse_is_sub_array_assignment
-from mdt import _parse_sub_array_assignment_index
+from pymdt import loadmdt
+from pymdt import _parse_variable_name
+from pymdt import _parse_array_assignment
+from pymdt import _parse_is_sub_array_assignment
+from pymdt import _parse_sub_array_assignment_index
 
 _TEST_PATH = path.dirname(path.abspath(__file__))
 
